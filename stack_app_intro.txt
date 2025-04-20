@@ -1,0 +1,74 @@
+Expressions:
+Expressions has operands and operators.
+3 types:
+1. Infix - Human readable - <op><opr><op> - Eg: A + B
+2. Postfix - Machine readable - <op><op><opr> - Eg: AB+
+3. Prefix - Machine readable -  <opr><op><op> - Eg: +AB 
+
+Operand - Constant, Variable, expression 
+Operator - Binary operators - Eg: +, - , / , %, && 
+
+Eg: 
+2 + 3 - 4 / 7 * 5 + 9  - all are Constants
+A + B - C / D - all are Variables 
+(A + B) / ( C - 3)  - combo of variables, constants and Expressions
+
+While evaluate expressions 
+The order of the operation:
+1. Precedence of the operations
+2. Associativity - if there is a conflict where all the operators have the
+                    same Precedence
+
+---------------------------------
+1. Paranthesis - (),{},[] 
+2. Exponent - ^ - R->L - 2^3^4
+3. Multiplcation (*) and Division (/) - L->R
+4. Addition (+) and Sub (-) - L->R
+
+2 + 3 - 4 / 7 * 5 + 9 - readablilty is not good
+((2 + 3) - (4 / 7)) * (5 + 9) - good readability
+
+Postfix: - Reverse Polish notation
+Straight forward alg
+Computation time is less
+Also the memory used is less
+
+Prefix: - Polish notation
+the memory used is less
+
+ALGORITHM FOR INFIX to POSTFIX:
+Input is the token of the infix expression - char array
+
+1. Create an empty stack called opstack for keeping operators.
+2. Create an empty array for the output.
+3. Scan the input array from L-R 
+        1. If the token is an operand, add it to the output array.
+        2. If the token is a left paranthesis (, push it on to the stack.
+        3. IF the token is a right paranthesis ) , pop the stack until the 
+        corresponding left paranthesis is found. Add all the operators to the
+        end of the output array.
+        4. If the token is an operator, *,/,+,(,-, push it on to stack.
+        However, first remove any operator already on the stack that has higher
+        or equal precedence and add them to the output array.
+
+    4. When the input is completely processed, check the stack for any leftover 
+    operators. Pop them to the end of the output array.
+
+
+
+    ALOGORITHM FOR EVALUATING A POSTFIX EXPRESSION:
+    1. Create a stack called input.
+    2. Scan the input from 0 to len-1: L - R 
+    3. if token is an operand.
+            push it on to the input stack.
+    4. Otherwise, if the token is an operator 
+        pop the first two elements on the stack and perform the operation
+            based on the operator.
+        push the result back onto the stack.
+    5. return the top most element -> result of evaluating the postfix exp.
+    
+
+
+
+
+
